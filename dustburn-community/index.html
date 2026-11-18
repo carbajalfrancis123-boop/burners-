@@ -1,0 +1,598 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DUSTBURN | Comunidad Oficial "Burners" - Left 4 Dead 2</title>
+  <meta name="description" content="Página oficial de la comunidad Burners del streamer Dustburn en Kick. Registro de miembros, partidas de Left 4 Dead 2, lobbies interactivos y soundboard.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="assets/dustburn_logo.webp">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Canvas de Partículas Ardientes estilo L4D2 -->
+  <canvas id="canvas-particles"></canvas>
+
+  <div class="app-container">
+    <!-- ================= NAVBAR ================= -->
+    <header class="main-header">
+      <div class="container nav-container">
+        <a href="#inicio" class="brand-wrapper">
+          <img src="assets/dustburn_logo.webp" alt="Dustburn Logo" class="brand-logo-img">
+          <div class="brand-info">
+            <span class="brand-name">DUST<span>BURN</span></span>
+            <span class="brand-tagline">Comunidad Burners • L4D2</span>
+          </div>
+        </a>
+
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#inicio" class="nav-link active"><i class="fas fa-fire text-fire"></i> Inicio</a></li>
+          <li><a href="#partidas" class="nav-link"><i class="fas fa-gamepad"></i> Partidas & Lobbies</a></li>
+          <li><a href="#burners" class="nav-link"><i class="fas fa-users"></i> Comunidad</a></li>
+          <li><a href="#stream" class="nav-link"><i class="fas fa-tv"></i> En Vivo (Kick)</a></li>
+          <li><a href="#ruleta" class="nav-link"><i class="fas fa-dice"></i> Ruleta de Retos</a></li>
+          <li><a href="#soundboard" class="nav-link"><i class="fas fa-volume-up"></i> Soundboard</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="https://kick.com/dustburnn" target="_blank" rel="noopener noreferrer" class="kick-live-badge" title="Ir al canal de Kick">
+            <span class="pulse-dot"></span>
+            <i class="fab fa-kickstarter-k"></i> EN VIVO KICK
+          </a>
+          <button class="btn btn-primary btn-open-register">
+            <i class="fas fa-user-plus"></i> Registrarme
+          </button>
+          <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir Menú">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero-section" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-text-content">
+          <div class="hero-badge-container">
+            <span class="badge-tag"><i class="fas fa-burn"></i> Portal Oficial de la Comunidad</span>
+            <span class="badge-tag badge-l4d2"><i class="fas fa-biohazard"></i> Left 4 Dead 2 Streamer</span>
+          </div>
+
+          <h1 class="hero-title">
+            BIENVENIDOS A <br>
+            <span class="text-glow">LOS</span> <span class="text-gradient">BURNERS</span>
+          </h1>
+
+          <p class="hero-desc">
+            Únete a la comunidad oficial del streamer <strong>Dustburn</strong>. 
+            Regístrate con tu Steam ID, anótate a las salas de <strong>Versus 4v4</strong> y <strong>Campaña</strong> para jugar en directo durante las transmisiones de Kick, y demuestra tu nivel.
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary btn-open-register">
+              <i class="fas fa-skull"></i> Unirme a los Burners
+            </button>
+            <a href="#partidas" class="btn btn-secondary">
+              <i class="fas fa-crosshairs"></i> Ver Lista de Partidas
+            </a>
+            <button class="btn btn-outline-fire" onclick="window.DustburnPlayer && window.DustburnPlayer.togglePlay()">
+              <i class="fas fa-music"></i> Música Oficial
+            </button>
+          </div>
+
+          <!-- Redes Sociales Oficiales de Dustburn -->
+          <div class="social-links-bar">
+            <a href="https://kick.com/dustburnn" target="_blank" rel="noopener noreferrer" class="social-pill kick">
+              <i class="fab fa-kickstarter-k" style="color: var(--kick-green);"></i> kick.com/dustburnn
+            </a>
+            <a href="https://www.tiktok.com/@dustburnn?lang=es" target="_blank" rel="noopener noreferrer" class="social-pill tiktok">
+              <i class="fab fa-tiktok" style="color: #fe2c55;"></i> TikTok @dustburnn
+            </a>
+            <a href="https://www.youtube.com/@dustburnn-99" target="_blank" rel="noopener noreferrer" class="social-pill youtube">
+              <i class="fab fa-youtube" style="color: #ff0000;"></i> YouTube @dustburnn-99
+            </a>
+          </div>
+        </div>
+
+        <!-- Logo Frame con Aura Llameante -->
+        <div class="streamer-showcase">
+          <div class="logo-flame-frame">
+            <img src="assets/dustburn_logo.webp" alt="Logo Dustburn" class="showcase-logo">
+            <div class="live-floating-card">
+              <div class="live-stream-icon">
+                <i class="fas fa-headset"></i>
+              </div>
+              <div>
+                <strong style="font-family: var(--font-subheading); color:#fff; font-size:1.05rem; display:block;">DUSTBURN EN KICK</strong>
+                <span style="color: var(--kick-green); font-size: 0.8rem; font-weight: 600;">Transmitiendo Left 4 Dead 2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTADORES / ESTADÍSTICAS ================= -->
+    <section class="stats-bar-section">
+      <div class="container stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-users"></i></div>
+          <div class="stat-info">
+            <div class="stat-number" id="stat-total-burners">6</div>
+            <div class="stat-label">Burners Registrados</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-gamepad"></i></div>
+          <div class="stat-info">
+            <div class="stat-number" id="stat-active-matches">3</div>
+            <div class="stat-label">Salas de Partidas</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-fire"></i></div>
+          <div class="stat-info">
+            <div class="stat-number">4v4</div>
+            <div class="stat-label">Versus Comunitario</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+          <div class="stat-info">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Comunidad Activa</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SALA DE PARTIDAS & LOBBIES ================= -->
+    <section class="section" id="partidas">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-badge"><i class="fas fa-crosshairs"></i> Matchmaking en Vivo</span>
+            <h2 class="section-title">LISTA DE PARTIDAS & LOBBIES</h2>
+            <p class="section-desc">Ocupa tu lugar en el equipo de supervivientes o infectados para jugar con Dustburn en stream.</p>
+          </div>
+          <div class="lobby-controls">
+            <button class="btn btn-primary btn-open-create-lobby">
+              <i class="fas fa-plus"></i> Crear Sala de Partida
+            </button>
+          </div>
+        </div>
+
+        <!-- Grid de Salas Inyectadas Dinámicamente -->
+        <div class="lobbies-grid" id="lobbies-container">
+          <!-- Renderizado por lobbies.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DIRECTORIO DE LA COMUNIDAD BURNERS ================= -->
+    <section class="section" id="burners">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-badge"><i class="fas fa-shield-alt"></i> Padrón Oficial</span>
+            <h2 class="section-title">COMUNIDAD "BURNERS"</h2>
+            <p class="section-desc">Todos los miembros registrados, sus roles, horas de juego y enlaces de Steam.</p>
+          </div>
+          <div class="community-stats-header">
+            <span class="badge-tag" id="community-total-badge">6 Miembros</span>
+            <button class="btn btn-secondary" id="btn-export-csv" title="Descargar base de datos en CSV para el Streamer">
+              <i class="fas fa-file-csv"></i> Exportar Lista
+            </button>
+            <button class="btn btn-primary btn-open-register">
+              <i class="fas fa-user-plus"></i> Registrarme
+            </button>
+          </div>
+        </div>
+
+        <!-- Filtros y Búsqueda -->
+        <div class="burners-filter-bar">
+          <div class="search-input-wrap">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="burner-search" placeholder="Buscar por Nickname, Rol o Personaje...">
+          </div>
+
+          <div class="filter-pills">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="survivors">Supervivientes</button>
+            <button class="filter-btn" data-filter="infected">Infectados Especiales</button>
+            <button class="filter-btn" data-filter="mods">Moderadores</button>
+            <button class="filter-btn" data-filter="vips">Subs VIP</button>
+          </div>
+        </div>
+
+        <!-- Grid de Tarjetas de Burners -->
+        <div class="burners-grid" id="burners-grid">
+          <!-- Renderizado por community.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STREAM EN VIVO KICK & MEDIA CENTER ================= -->
+    <section class="section" id="stream">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-badge"><i class="fab fa-kickstarter-k text-kick"></i> Transmisión Oficial</span>
+            <h2 class="section-title">CANAL EN VIVO DE DUSTBURN</h2>
+            <p class="section-desc">Sigue el directo de Left 4 Dead 2, interactúa en el chat de Kick y no te pierdas ningún directo.</p>
+          </div>
+          <a href="https://kick.com/dustburnn" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background: var(--kick-green); color: #000;">
+            <i class="fas fa-external-link-alt"></i> Abrir en Kick.com
+          </a>
+        </div>
+
+        <div class="stream-grid">
+          <div class="stream-player-box">
+            <iframe 
+              src="https://player.kick.com/dustburnn" 
+              title="Kick Stream Dustburn"
+              allow="autoplay; fullscreen; picture-in-picture"
+              loading="lazy">
+            </iframe>
+          </div>
+
+          <div class="stream-sidebar">
+            <div class="stream-info-card">
+              <h4><i class="fas fa-broadcast-tower text-fire"></i> Info del Directo</h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 12px;">
+                ¡Partidas comunitarias todos los días en Kick! Jugamos Versus 4v4 con la comunidad, campañas en dificultad Experto y custom campaigns creadas por fans.
+              </p>
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <span class="tag-mini"><i class="fas fa-clock"></i> Horario habitual: Noches</span>
+                <span class="tag-mini"><i class="fas fa-headset"></i> Discord en directo</span>
+              </div>
+            </div>
+
+            <div class="stream-info-card">
+              <h4><i class="fas fa-scroll text-fire"></i> Reglas de las Partidas</h4>
+              <ul class="stream-rules-list">
+                <li><span>1.</span> Respeto total entre todos los Burners.</li>
+                <li><span>2.</span> Nada de Ragequit en partidas de Versus.</li>
+                <li><span>3.</span> Tener micrófono configurado si juegas en Discord.</li>
+                <li><span>4.</span> Divertirse y apoyar el canal con tu follow en Kick.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= RULETA DE RETOS & CASTIGOS STREAM ================= -->
+    <section class="section" id="ruleta">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-badge"><i class="fas fa-dice text-fire"></i> Minijuego de Stream</span>
+            <h2 class="section-title">RULETA DE RETOS & CASTIGOS</h2>
+            <p class="section-desc">Gira la ruleta en directo para definir las reglas locas o castigos en la siguiente partida de L4D2.</p>
+          </div>
+        </div>
+
+        <div class="roulette-container">
+          <div class="roulette-wheel-box">
+            <div class="roulette-pointer"></div>
+            <canvas id="canvas-roulette" width="340" height="340"></canvas>
+            <button class="btn btn-primary" id="spin-roulette-btn" style="margin-top: 20px;">
+              <i class="fas fa-sync-alt"></i> ¡Girar la Ruleta!
+            </button>
+          </div>
+
+          <div class="roulette-info">
+            <div class="result-card">
+              <h3>Reto Seleccionado para la Partida:</h3>
+              <div class="challenge-text" id="challenge-result-text">
+                ¡Presiona "Girar la Ruleta"!
+              </div>
+            </div>
+
+            <p style="font-size: 0.92rem; color: var(--text-muted);">
+              Esta ruleta interactiva es perfecta para que Dustburn y los moderadores agreguen emoción extra al stream. 
+              ¡Cada giro incluye retos como <em>"Solo Pistolas"</em>, <em>"Cero Botiquines"</em> o <em>"El primero en caer dona 1 sub"</em>!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SOUNDBOARD L4D2 ================= -->
+    <section class="section" id="soundboard">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-badge"><i class="fas fa-bullhorn text-fire"></i> Efectos de Audio</span>
+            <h2 class="section-title">SOUNDBOARD INTERACTIVO L4D2</h2>
+            <p class="section-desc">Sonidos sintetizados icónicos del juego para ambientar la transmisión y divertirse en comunidad.</p>
+          </div>
+        </div>
+
+        <div class="soundboard-grid">
+          <button class="sound-btn" data-sound="pipeBomb">
+            <span class="sound-icon">💣</span>
+            <span class="sound-label">Bomba Casera</span>
+            <span class="sound-sub">Beep-beep... ¡BOOM!</span>
+          </button>
+
+          <button class="sound-btn" data-sound="tankAlert">
+            <span class="sound-icon">💪</span>
+            <span class="sound-label">Alerta del Tank</span>
+            <span class="sound-sub">Música de terror</span>
+          </button>
+
+          <button class="sound-btn" data-sound="witchCry">
+            <span class="sound-icon">😭</span>
+            <span class="sound-label">Llanto de Witch</span>
+            <span class="sound-sub">¡Apaguen las linternas!</span>
+          </button>
+
+          <button class="sound-btn" data-sound="hunterScream">
+            <span class="sound-icon">👹</span>
+            <span class="sound-label">Ataque de Hunter</span>
+            <span class="sound-sub">Salto de 25 DMG</span>
+          </button>
+
+          <button class="sound-btn" data-sound="hordeIncoming">
+            <span class="sound-icon">🧟</span>
+            <span class="sound-label">Alerta de Horda</span>
+            <span class="sound-sub">Sirena de alarma zombie</span>
+          </button>
+
+          <button class="sound-btn" data-sound="shotgunBlast">
+            <span class="sound-icon">🔫</span>
+            <span class="sound-label">Escopeta L4D2</span>
+            <span class="sound-sub">Disparo + recarga</span>
+          </button>
+
+          <button class="sound-btn" data-sound="pillsHere">
+            <span class="sound-icon">💊</span>
+            <span class="sound-label">¡Pills Here!</span>
+            <span class="sound-sub">Pastillas para el equipo</span>
+          </button>
+
+          <button class="sound-btn" data-sound="safehouseVictory">
+            <span class="sound-icon">🚪</span>
+            <span class="sound-label">Refugio Seguro</span>
+            <span class="sound-sub">¡Capítulo superado!</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="main-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+              <img src="assets/dustburn_logo.webp" alt="Dustburn" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--fire-primary);">
+              <span style="font-family: var(--font-heading); font-size: 1.6rem; color: #fff;">DUSTBURN • BURNERS</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 400px;">
+              Comunidad gamer oficial de Left 4 Dead 2 y streaming en Kick. Creado por y para los verdaderos Burners.
+            </p>
+          </div>
+
+          <div class="footer-socials" style="display: flex; gap: 14px;">
+            <a href="https://kick.com/dustburnn" target="_blank" rel="noopener noreferrer" class="social-pill kick">
+              <i class="fab fa-kickstarter-k"></i> Kick
+            </a>
+            <a href="https://www.tiktok.com/@dustburnn?lang=es" target="_blank" rel="noopener noreferrer" class="social-pill tiktok">
+              <i class="fab fa-tiktok"></i> TikTok
+            </a>
+            <a href="https://www.youtube.com/@dustburnn-99" target="_blank" rel="noopener noreferrer" class="social-pill youtube">
+              <i class="fab fa-youtube"></i> YouTube
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-credits">
+          © 2026 Comunidad DUSTBURN. Todos los derechos reservados. Left 4 Dead 2 es marca registrada de Valve Corporation.
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ================= REPRODUCTOR DE MÚSICA HUD FLOTANTE ================= -->
+  <div class="audio-player-hud" id="audio-hud">
+    <audio id="main-audio" preload="auto">
+      <source src="assets/dustburn_theme.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="audio-hud-container">
+      <div class="track-info-wrap">
+        <img src="assets/dustburn_logo.webp" alt="Track Cover" class="track-cover-art">
+        <div class="track-texts">
+          <span class="track-title">Diles • Himno Burner</span>
+          <span class="track-subtitle"><i class="fas fa-fire text-fire"></i> Música Oficial de Fondo</span>
+        </div>
+      </div>
+
+      <div class="player-controls-center">
+        <div class="controls-buttons">
+          <div class="equalizer-visualizer">
+            <span class="eq-bar"></span>
+            <span class="eq-bar"></span>
+            <span class="eq-bar"></span>
+            <span class="eq-bar"></span>
+            <span class="eq-bar"></span>
+          </div>
+
+          <button class="ctrl-btn btn-play-main" id="play-btn" title="Reproducir / Pausar">
+            <i class="fas fa-play" id="play-icon"></i>
+          </button>
+        </div>
+
+        <div class="progress-bar-wrap">
+          <span class="time-stamp" id="current-time">0:00</span>
+          <div class="progress-track" id="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <span class="time-stamp" id="total-time">4:41</span>
+        </div>
+      </div>
+
+      <div class="volume-control-wrap">
+        <button class="ctrl-btn" id="mute-btn" title="Silenciar">
+          <i class="fas fa-volume-up" id="mute-icon"></i>
+        </button>
+        <input type="range" class="volume-slider" id="volume-slider" min="0" max="1" step="0.05" value="0.7">
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: REGISTRO DE BURNERS ================= -->
+  <div class="modal-overlay" id="modal-register">
+    <div class="modal-dialog">
+      <div class="modal-head">
+        <h3><i class="fas fa-user-plus text-fire"></i> REGISTRO DE BURNER</h3>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="register-burner-form">
+          <div class="form-group">
+            <label for="reg-nick">Gamertag / Apodo Burner *</label>
+            <input type="text" id="reg-nick" required placeholder="Ej. Burner_Shotgun, FrancoL4D">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="reg-steam">Steam ID / Perfil URL</label>
+              <input type="text" id="reg-steam" placeholder="https://steamcommunity.com/id/...">
+            </div>
+            <div class="form-group">
+              <label for="reg-discord">Usuario de Discord</label>
+              <input type="text" id="reg-discord" placeholder="usuario#0000 o @usuario">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="reg-role">Rol Principal Favorito</label>
+              <select id="reg-role">
+                <option value="Rushing Shotgun">Puntero / Rushing Escopeta</option>
+                <option value="Francotirador">Francotirador / Rifle Caza</option>
+                <option value="Soporte / Medic">Soporte Médico / Curandero</option>
+                <option value="Infectado Especial">Infectado Especial (Hunter/Tank)</option>
+                <option value="Polivalente / Versátil">Polivalente / Versátil</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="reg-char">Personaje L4D2 Favorito</label>
+              <select id="reg-char">
+                <option value="Francis">Francis</option>
+                <option value="Bill">Bill</option>
+                <option value="Zoey">Zoey</option>
+                <option value="Louis">Louis</option>
+                <option value="Coach">Coach</option>
+                <option value="Ellis">Ellis</option>
+                <option value="Nick">Nick</option>
+                <option value="Rochelle">Rochelle</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="reg-hours">Horas en Left 4 Dead 2</label>
+              <input type="number" id="reg-hours" min="0" placeholder="Ej. 650">
+            </div>
+            <div class="form-group">
+              <label for="reg-kick-rank">Rango en Kick</label>
+              <select id="reg-kick-rank">
+                <option value="Seguidor">Seguidor de Dustburn</option>
+                <option value="Sub VIP">Suscriptor VIP</option>
+                <option value="Moderador">Moderador del Canal</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-motto">Lema o Frase de Combate</label>
+            <input type="text" id="reg-motto" placeholder="Ej. ¡Hunter que salta, hunter que no se levanta!">
+          </div>
+
+          <div style="display: flex; gap: 10px; margin-top: 24px;">
+            <button type="button" class="btn btn-secondary btn-modal-cancel" style="flex: 1;">Cancelar</button>
+            <button type="submit" class="btn btn-primary" style="flex: 2;"><i class="fas fa-check"></i> Completar Registro</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: CREAR SALA DE PARTIDA ================= -->
+  <div class="modal-overlay" id="modal-create-lobby">
+    <div class="modal-dialog">
+      <div class="modal-head">
+        <h3><i class="fas fa-gamepad text-fire"></i> CREAR SALA DE PARTIDA</h3>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="create-lobby-form">
+          <div class="form-group">
+            <label for="lobby-title-input">Nombre o Título de la Sala *</label>
+            <input type="text" id="lobby-title-input" required placeholder="Ej. Versus de Subs con Dustburn">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="lobby-mode-input">Modo de Juego</label>
+              <select id="lobby-mode-input">
+                <option value="versus">Versus (4 vs 4 - 8 Slots)</option>
+                <option value="campaign">Campaña Co-op (4 Jugadores)</option>
+                <option value="survival">Supervivencia / Survival (4 Jugadores)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="lobby-diff-input">Dificultad</label>
+              <select id="lobby-diff-input">
+                <option value="Normal">Normal</option>
+                <option value="Avanzado">Avanzado</option>
+                <option value="Experto">Experto</option>
+                <option value="Experto Realismo">Experto Realismo</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="lobby-campaign-input">Campaña / Mapa</label>
+            <input type="text" id="lobby-campaign-input" placeholder="Ej. Dark Carnival, No Mercy, Parish, etc.">
+          </div>
+
+          <div class="form-group">
+            <label for="lobby-ip-input">IP del Servidor / Comando de Conexión</label>
+            <input type="text" id="lobby-ip-input" placeholder="Ej. connect 190.113.88.24:27015">
+          </div>
+
+          <div style="display: flex; gap: 10px; margin-top: 24px;">
+            <button type="button" class="btn btn-secondary btn-modal-cancel" style="flex: 1;">Cancelar</button>
+            <button type="submit" class="btn btn-primary" style="flex: 2;"><i class="fas fa-plus"></i> Abrir Sala</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor para Notificaciones Toast Flotantes -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/particles.js"></script>
+  <script src="js/audio-player.js"></script>
+  <script src="js/soundboard.js"></script>
+  <script src="js/lobbies.js"></script>
+  <script src="js/community.js"></script>
+  <script src="js/roulette.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
